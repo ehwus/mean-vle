@@ -2,6 +2,8 @@ const User = require("../models/user.model");
 const dbHandler = require("../tests/connect-test-database");
 
 beforeAll(async () => await dbHandler.connect());
+afterEach(async () => await dbHandler.clearDatabase());
+afterAll(async () => await dbHandler.closeDatabase());
 
 describe("User", () => {
   it("Allows the creation of a new user", async () => {
